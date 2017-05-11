@@ -1,0 +1,17 @@
+{
+  "name": "my-website",
+  "version": "0.1",
+  "description": "A really cool website based on code by Socos LLC",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6"
+  }
+}

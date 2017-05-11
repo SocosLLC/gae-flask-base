@@ -1,0 +1,50 @@
+{#  The base layout. All layouts derive from this one.
+    All templates should derive from this one too.
+#}
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+
+    <title>{% block title %}My Website{% endblock %}</title>
+
+    <!-- CSS Libs -->
+    <link href="/static/css/base-libs.min.css" rel="stylesheet">
+    <link href="/static/css/base.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/static/img/favicon.png" />
+
+    {% block style_block %}{# page-specific CSS #}{% endblock %}
+
+    {% block head_script %}{# defer-incapable JS block #}{% endblock %}
+
+</head>
+
+<body>
+
+    {% include 'includes/navbar.html' %}
+
+    {# We put flash messages in a block so that children can override and put them elsewhere. #}
+    {% block flash %}
+      {% include 'includes/flash_message.html' %} {# page-level feedback notices #}
+    {% endblock %}
+
+    <div id="body-content">
+        {% block content %}{# main content area #}{% endblock %}
+    </div>
+
+    {% include 'includes/footer.html' %}
+
+    <!-- JS -->
+    <script type="text/javascript" src="/static/js/base-libs.min.js"></script>
+    {% block tail_script %}{# defer-capable JS block #}{% endblock %}
+    {{ profiler_includes|safe }}
+
+</body>
+
+
+</html>

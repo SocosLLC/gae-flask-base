@@ -1,0 +1,11 @@
+{% import 'includes/wtforms_bootstrap_macros.html' as macros %}
+<div id="b">
+  This is an AJAX thing in state B!
+
+  {% call macros.render_form(form,
+                             action_url=url_for('ajaxy'),
+                             action_text='Add',
+                             id='email-form') %}
+    {{ macros.render_field(form.email) }}
+  {% endcall %}
+</div>

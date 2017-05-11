@@ -1,0 +1,11 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="light-well col-xs-12 col-md-6 col-md-offset-3">
+        {% block error_content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

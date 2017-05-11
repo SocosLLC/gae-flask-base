@@ -1,0 +1,41 @@
+{% macro nav_list_item(target, name) %}
+  <li
+      {% if request.endpoint == target %}
+        class="active"
+      {% endif %}
+  >
+    <a href="{{ url_for(target) }}">
+      {{ name }}
+    </a>
+  </li>
+{% endmacro %}
+
+
+<link href="/static/css/navbar.min.css" rel="stylesheet" />
+
+<header id="navigation">
+  <div class="navbar navbar-fixed-top" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+          My Site
+        </a>
+      </div>
+      <nav id="main-menu" class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+          {{ nav_list_item('home', 'Home') }}
+          {{ nav_list_item('ajaxy', 'AJAXy Example') }}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="navbar-spacer"></div>
+

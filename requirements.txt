@@ -1,0 +1,20 @@
+# Application
+flask
+flask-assets
+    cssmin
+    jsmin
+flask-debugtoolbar
+flask-wtf
+wtforms
+
+# Testing
+beautifulsoup4
+lxml  # for bs4
+flask-testing
+nose
+nosegae>=0.5.8
+selenium
+wsgi-liveserver
+
+# Development
+when-changed  # for rebuilding assets on changes in development

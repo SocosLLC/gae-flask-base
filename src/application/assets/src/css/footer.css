@@ -1,0 +1,33 @@
+/* Taken from http://mystrd.at/modern-clean-css-sticky-footer/ */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 150px; /* bottom = footer height */
+}
+
+@media only screen and (min-width : 768px) {
+    body {
+        margin: 0 0 210px; /* bottom = footer height + 60px */
+    }
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 150px;
+    width: 100%;
+    background-color: #5b5b5b;
+    color: #fff;
+    font-weight: 300;
+    padding-top: 30px;
+}
+
+footer a {
+    color: #2bccb8;
+    font-weight: 600;
+}
