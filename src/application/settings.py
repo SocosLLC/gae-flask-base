@@ -35,15 +35,6 @@ class Testing(Config):
     TESTING = True
 
 
-class Staging(Config):
-    DEBUG = True
-    PROPAGATE_EXCEPTIONS = True
-    # Flask-DebugToolbar settings
-    DEBUG_TB_PROFILER_ENABLED = True
-    DEBUG_TB_INTERCEPT_REDIRECTS = False
-    CSRF_ENABLED = True
-
-
 class Production(Config):
     DEBUG = False
     CSRF_ENABLED = True

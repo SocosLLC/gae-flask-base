@@ -13,7 +13,6 @@ import env_conf
 class Environment(object):
     DEV = False
     TEST = False
-    STAGING = False
     PROD = False
     LOCAL = False  # True if DEV or TEST, false if STAGING or PROD
     env_name = None
@@ -24,8 +23,6 @@ class Environment(object):
             self.DEV = True
         elif mode == 'TEST':
             self.TEST = True
-        elif mode == 'STAGING':
-            self.STAGING = True
         elif mode == 'PROD':
             self.PROD = True
         else:
@@ -63,13 +60,6 @@ if app.env.DEV:
 elif app.env.TEST:
     print 'Environment: TEST'
     app.config.from_object('application.settings.Testing')
-
-elif app.env.STAGING:
-    print 'Environment: STAGING'
-    # Development settings
-    app.config.from_object('application.settings.Staging')
-    # Flask-DebugToolbar
-    toolbar = DebugToolbarExtension(app)
 
 else:
     assert app.env.PROD
