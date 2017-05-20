@@ -3,13 +3,12 @@
 
 import os
 import sys
-sys.path.insert(0, '../libs')
 import logging
 
 import env_conf
 
 
-# Initialize environment ###########################################################################
+# Initialize environment #######################################################
 
 class Environment(object):
     DEV = False
@@ -39,16 +38,11 @@ _env_name = os.environ.get('ENV') or env_conf.FLASK_CONF
 env = Environment(_env_name)
 
 
-# Generic Initialization ###########################################################################
+# Generic Initialization #######################################################
 
 logging.basicConfig(stream=sys.stderr)
 
-# Patch SSL support before you do anything else.
-if env.DEV:
-    _patch_ssl_support()
-
 from flask import Flask
-import flask_login as flask_login
 from flask_debugtoolbar import DebugToolbarExtension
 import assets
 
@@ -57,7 +51,7 @@ app.env = env
 
 assets.init(app)
 
-# Environment-specific initialization ##############################################################
+# Environment-specific initialization ##########################################
 
 if app.env.DEV:
     print 'Environment: DEV'
@@ -83,8 +77,7 @@ else:
     app.config.from_object('application.settings.Production')
 
 
-####################################################################################################
-# Jinja2 Configuration
+# Jinja2 Configuration ########################################################
 
 # Loop controls extension
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
@@ -95,7 +88,6 @@ if app.env.LOCAL:
     sandbox._WHITE_LIST_C_MODULES += ['_ctypes', 'gestalt']
 
 
-####################################################################################################
-# Pull in URL dispatch routes
+# Pull in URL dispatch routes #################################################
 
 import urls

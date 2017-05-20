@@ -12,7 +12,7 @@ function ajaxGet(url, data) {
       $(data.view_container).html(data.page);
     } else {  // If no pushState support, just go to URL
       console.log("No pushState. Redirecting to " + data.url);
-      //location.href = data.url;
+      location.href = data.url;
     }
   };
 
@@ -35,7 +35,7 @@ function ajaxPost(url, data, handler /* = null */) {
       $(data.view_container).html(data.page);
     } else {  // If no pushState support, just go to URL
       console.log("No pushState. Redirecting to " + data.url);
-      //location.href = data.url;
+      location.href = data.url;
     }
   };
 

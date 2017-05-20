@@ -64,7 +64,14 @@
                   {% set checked = (value == field.data) %}
                 {% endif %}
                 {% if inline %}
-                  <input {{ 'checked' if checked else None }} type="radio" class="inline-radio" name="{{ field.id }}" value="{{ value }}">{{ label }}
+                  <input
+                    {{ 'checked' if checked else None }}
+                    type="radio"
+                    style="margin-left: 2em; margin-right: 0.5em;"
+                    name="{{ field.id }}"
+                    value="{{ value }}"
+                  >
+                  {{ label }}
                 {% else %}
                   <div class="radio left-align">
                     <input {{ 'checked' if checked else None }} type="radio" name="{{ field.id }}" value="{{ value }}">{{ label }}
@@ -99,7 +106,6 @@
 {% macro render_form(form, action_url='', action_text='Submit', class_='',
                      btn_class='btn btn-default', id='',
                      cancel_btn_target='') -%}
-    <link rel="stylesheet" href="/static/css/wtforms_bootstrap_macros.css">
 {#    {{ form.errors if form.errors }}#}
     <form method="POST" action="{{ action_url }}" role="form" class="{{ class_ }}" id="{{ id }}">
         {{ form.hidden_tag() if form.hidden_tag }}

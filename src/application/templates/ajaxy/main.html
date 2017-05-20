@@ -1,7 +1,6 @@
 {% extends "layouts/base.html" %}
 
 {% block style_block %}
-  <link href="/static/css/ajaxy-libs.min.css" rel="stylesheet">
   <link href="/static/css/ajaxy.min.css" rel="stylesheet">
 {% endblock style_block %}
 
@@ -11,27 +10,31 @@
 
 {% block content %}
 
-  <div class="container ajaxy-content">
-    <div>
-      <a href="ajaxy?state=a">A</a>
-      <a href="ajaxy?state=b">B</a>
+  <div class="ajaxy-content">
+    <div class="row">
+      <div class="col-xs-12">
+        <button id="a-btn" class="btn btn-primary">A</button>
+        <button id="b-btn" class="btn btn-primary">B</button>
+      </div>
     </div>
-    <div id="ajaxy-panel">
-      {% block ajaxy_content %}
-        {% include 'includes/flash_message.html' %} {# page-level feedback notices #}
+    <div class="row">
+      <div id="ajaxy-panel" class="col-xs-12">
+        {% block ajaxy_content %}
+          {% include 'includes/flash_message.html' %} {# page-level feedback notices #}
 
-        {% if state == 'b' %}
-          {% include 'ajaxy/b.html' %}
-        {% else state == 'a' %}
-          {% include 'ajaxy/a.html' %}
-        {% endif %}
+          {% if state == 'b' %}
+            {% include 'ajaxy/b.html' %}
+          {% elif state == 'a' %}
+            {% include 'ajaxy/a.html' %}
+          {% endif %}
 
-      {% endblock %}
+        {% endblock %}
+      </div>
     </div>
   </div>
 {% endblock content %}
 
 
 {% block tail_script %}{# defer-capable JS block #}
-  <script type="text/javascript" src="/static/js/ajaxy-libs.min.js"></script>
+  <script type="text/javascript" src="/static/js/ajaxy.min.js"></script>
 {% endblock %}

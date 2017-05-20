@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    margin: 0 0 150px; /* bottom = footer height */
+    margin: 0 0 100px; /* bottom = footer height */
 }
 
 @media only screen and (min-width : 768px) {
@@ -19,15 +19,15 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 150px;
+    height: 100px;
     width: 100%;
-    background-color: #5b5b5b;
+    background-color: darkgrey;
     color: #fff;
     font-weight: 300;
-    padding-top: 30px;
+    padding-top: 15px;
 }
 
 footer a {
-    color: #2bccb8;
+    color: lightblue;
     font-weight: 600;
 }

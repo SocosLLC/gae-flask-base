@@ -11,6 +11,10 @@ from application import forms, models, templating
 LOG = logging.getLogger(__name__)
 
 
+def warmup():
+    return ''
+
+
 def home():
     return render_template('home.html')
 
@@ -33,19 +37,19 @@ class AjaxyView(templating.RenderView):
         email = form.email.data
         entry = models.Email.query(models.Email.email == email).get()
         if entry:
-            flash('Email already exists!')
+            flash('Email already exists!', 'info')
             return self.render_page(state='b', form=form)
         else:
             new_entry = models.Email(email=email)
             new_entry.put()
-        return self.render_page(state='a')
+        return self.render_page(state='b')
 
-    def render_page(self, state, form):
+    def render_page(self, state, form=None):
         if state == 'b':
             form = form or forms.EmailForm()
-            self.render_template(state=state, form=form)
+            return self.render_template(state=state, form=form)
         else:
             email_entities = models.Email.query().fetch()
             emails = [e.email for e in email_entities]
-            self.render_template(state=state, emails=emails)
+            return self.render_template(state=state, emails=emails)
 

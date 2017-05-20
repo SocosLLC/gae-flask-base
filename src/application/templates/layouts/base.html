@@ -33,7 +33,7 @@
       {% include 'includes/flash_message.html' %} {# page-level feedback notices #}
     {% endblock %}
 
-    <div id="body-content">
+    <div id="body-content" class="container">
         {% block content %}{# main content area #}{% endblock %}
     </div>
 
@@ -41,6 +41,7 @@
 
     <!-- JS -->
     <script type="text/javascript" src="/static/js/base-libs.min.js"></script>
+    <script type="text/javascript" src="/static/js/base.min.js"></script>
     {% block tail_script %}{# defer-capable JS block #}{% endblock %}
     {{ profiler_includes|safe }}
 

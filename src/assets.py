@@ -38,6 +38,7 @@ def init(app=None):
 def _add_base_bundle(env):
     css = Bundle(
         "src/css/base.css",
+        "src/css/navbar.css",
         "src/css/footer.css",
         filters=["autoprefixer6", "cssmin"], output="css/base.min.css")
     env.register('base_css', css)
