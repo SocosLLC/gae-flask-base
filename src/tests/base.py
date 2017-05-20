@@ -31,9 +31,9 @@ LOG = logging.getLogger('').handlers[0]
 LOG.setFormatter(logging.Formatter(unicode(logging.BASIC_FORMAT)))
 LOG.setLevel(logging.INFO)
 
-JIVE_SERVER_SKIP_SELENIUM_TESTS = os.environ.get('JIVE_SERVER_SKIP_SELENIUM_TESTS')
+QUICK = os.environ.get('QUICK') == '1'
 
-QUIET = os.environ.get('JIVE_QUIET') == '1'
+QUIET = os.environ.get('QUIET') == '1'
 
 
 ####################################################################################################
@@ -139,11 +139,12 @@ class LiveServerTestBase(LiveServerTestCase):
         self._tear_down()
 
     def output_debug(self):
-        print 'CONSOLE'
-        pprint(self.console())
-        print 'SOURCE'
-        print self.driver.page_source
-        self.save_screenshot()
+        if not QUIET:
+            print 'CONSOLE'
+            pprint(self.console())
+            print 'SOURCE'
+            print self.driver.page_source
+            self.save_screenshot()
 
     def console(self):
         return self.driver.get_log('browser')

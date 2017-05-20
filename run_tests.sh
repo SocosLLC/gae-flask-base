@@ -5,7 +5,8 @@ TESTARGS=${@:-"src/tests/"}
 set +e  # Don't die before we clean up
 ./link_env_conf.sh test
 mkdir -p tmp/
-../env_gae/bin/nosetests \
+./env/bin/python src/assets.py
+./env/bin/nosetests \
                     --with-gae \
                     --verbose \
                     --gae-application src/ \

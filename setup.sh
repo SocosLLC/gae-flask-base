@@ -27,9 +27,9 @@ source env/bin/activate
 echo
 echo "Creating symlinks"
 echo "-----------------"
-if [ ! -L src/lib ]; then
+if [ ! -L src/libs ]; then
     cd src/
-    ln -s ../env lib
+    ln -s ../env libs
     cd ..
 fi
 
@@ -40,14 +40,14 @@ bower install
 
 if [ ! -f src/application/secret_keys.py ]; then
     cd src/
-    ../../env/bin/python ./generate_keys.py
+    ./generate_keys.py
     cd ../
 fi
 
 echo
 echo "Building assets"
 echo "---------------"
-./env/bin/python ./src/assets.py
+./src/assets.py
 
 deactivate
 
